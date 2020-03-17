@@ -107,7 +107,7 @@ class Route implements \Serializable
         if (isset($data['compiled'])) {
             $this->compiled = $data['compiled'];
         }
-        $this->priority = $data['priority'] ?? 0;
+        $this->priority = $data['priority'];
     }
 
     /**
@@ -516,9 +516,7 @@ class Route implements \Serializable
     }
 
     /**
-     * Sets the condition.
-     *
-     * This method implements a fluent interface.
+     * Sets the priority.
      *
      * @return $this
      */
@@ -533,7 +531,7 @@ class Route implements \Serializable
     /**
      * Returns the priority.
      *
-     * @return integer The condition
+     * @return integer The priority
      */
     public function getPriority(): ?int
     {
