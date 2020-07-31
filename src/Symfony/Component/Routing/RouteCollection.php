@@ -303,4 +303,12 @@ class RouteCollection implements \IteratorAggregate, \Countable
             $this->resources[$key] = $resource;
         }
     }
+
+    /**
+     * @return int[]
+     */
+    public function getPriorities(): array
+    {
+        return $this->priorities;
+    }
 }
