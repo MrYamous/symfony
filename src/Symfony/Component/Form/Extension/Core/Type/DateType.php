@@ -182,10 +182,9 @@ class DateType extends AbstractType
         $view->vars['widget'] = $options['widget'];
 
         // Change the input to an HTML5 date input if
-        //  * the widget is set to "single_text"
+        //  * the widget is set to "html5"
         //  * the format matches the one expected by HTML5
-        //  * the html5 is set to true
-        if ($options['html5'] && 'single_text' === $options['widget'] && self::HTML5_FORMAT === $options['format']) {
+        if ('html5' === $options['widget'] && self::HTML5_FORMAT === $options['format']) {
             $view->vars['type'] = 'date';
         }
 
@@ -254,7 +253,7 @@ class DateType extends AbstractType
             ];
         };
 
-        $format = fn (Options $options) => 'single_text' === $options['widget'] ? self::HTML5_FORMAT : self::DEFAULT_FORMAT;
+        $format = fn (Options $options) => 'html5' === $options['widget'] ? self::HTML5_FORMAT : self::DEFAULT_FORMAT;
 
         $resolver->setDefaults([
             'years' => range((int) date('Y') - 5, (int) date('Y') + 5),
@@ -266,7 +265,6 @@ class DateType extends AbstractType
             'model_timezone' => null,
             'view_timezone' => null,
             'placeholder' => $placeholderDefault,
-            'html5' => true,
             // Don't modify \DateTime classes by reference, we treat
             // them like immutable value objects
             'by_reference' => false,
@@ -306,7 +304,7 @@ class DateType extends AbstractType
         $resolver->setAllowedTypes('input_format', 'string');
 
         $resolver->setNormalizer('html5', function (Options $options, $html5) {
-            if ($html5 && 'single_text' === $options['widget'] && self::HTML5_FORMAT !== $options['format']) {
+            if ('html5' === $options['widget'] && self::HTML5_FORMAT !== $options['format']) {
                 throw new LogicException(sprintf('Cannot use the "format" option of "%s" when the "html5" option is enabled.', self::class));
             }
 

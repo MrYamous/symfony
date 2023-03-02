@@ -208,10 +208,9 @@ class DateTimeType extends AbstractType
         $view->vars['widget'] = $options['widget'];
 
         // Change the input to an HTML5 datetime input if
-        //  * the widget is set to "single_text"
+        //  * the widget is set to "html5"
         //  * the format matches the one expected by HTML5
-        //  * the html5 is set to true
-        if ($options['html5'] && 'single_text' === $options['widget'] && self::HTML5_FORMAT === $options['format']) {
+        if ('html5' === $options['widget'] && self::HTML5_FORMAT === $options['format']) {
             $view->vars['type'] = 'datetime-local';
 
             // we need to force the browser to display the seconds by
@@ -248,7 +247,6 @@ class DateTimeType extends AbstractType
             'time_widget' => $timeWidget,
             'with_minutes' => true,
             'with_seconds' => false,
-            'html5' => true,
             // Don't modify \DateTime classes by reference, we treat
             // them like immutable value objects
             'by_reference' => false,
@@ -309,7 +307,7 @@ class DateTimeType extends AbstractType
         $resolver->setAllowedTypes('input_format', 'string');
 
         $resolver->setNormalizer('date_format', function (Options $options, $dateFormat) {
-            if (null !== $dateFormat && 'single_text' === $options['widget'] && self::HTML5_FORMAT === $options['format']) {
+            if (null !== $dateFormat && 'html5' === $options['widget'] && self::HTML5_FORMAT === $options['format']) {
                 throw new LogicException(sprintf('Cannot use the "date_format" option of the "%s" with an HTML5 date.', self::class));
             }
 

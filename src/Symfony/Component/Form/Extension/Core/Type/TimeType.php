@@ -222,9 +222,8 @@ class TimeType extends AbstractType
         ]);
 
         // Change the input to an HTML5 time input if
-        //  * the widget is set to "single_text"
-        //  * the html5 is set to true
-        if ($options['html5'] && 'single_text' === $options['widget']) {
+        //  * the widget is set to "html5"
+        if ('html5' === $options['widget']) {
             $view->vars['type'] = 'time';
 
             // we need to force the browser to display the seconds by
@@ -317,7 +316,6 @@ class TimeType extends AbstractType
             'view_timezone' => $viewTimezone,
             'reference_date' => null,
             'placeholder' => $placeholderDefault,
-            'html5' => true,
             // Don't modify \DateTime classes by reference, we treat
             // them like immutable value objects
             'by_reference' => false,
