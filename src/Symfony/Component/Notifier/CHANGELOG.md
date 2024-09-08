@@ -17,6 +17,7 @@ CHANGELOG
 
  * Make `TransportFactoryTestCase` and `TransportTestCase` compatible with PHPUnit 10+
  * Add `Desktop` channel
+ * Deprecate the `Sms77Transport` class, use `SevenIoTransport`instead
 
 6.3
 ---
