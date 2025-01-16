@@ -118,6 +118,11 @@ SecurityBundle
 
  * Deprecate the `security.hide_user_not_found` config option in favor of `security.expose_security_errors`
 
+ Notifier
+ --------
+
+ * Deprecate the `Sms77` transport, use `SevenIo` instead
+
 Serializer
 ----------
 

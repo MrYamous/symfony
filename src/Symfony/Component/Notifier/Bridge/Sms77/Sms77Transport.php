@@ -11,7 +11,7 @@
 
 namespace Symfony\Component\Notifier\Bridge\Sms77;
 
-trigger_deprecation('symfony/sms77-notifier', '7.2', 'The "symfony/sms77-notifier" package is deprecated, use "symfony/sevenio-notifier" instead.');
+trigger_deprecation('symfony/sms77-notifier', '7.3', 'The "symfony/sms77-notifier" package is deprecated, use "symfony/sevenio-notifier" instead.');
 
 use Symfony\Component\Notifier\Exception\TransportException;
 use Symfony\Component\Notifier\Exception\UnsupportedMessageTypeException;
@@ -26,7 +26,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 /**
  * @author André Matthies <matthiez@gmail.com>
  *
- * @deprecated since Symfony 7.2, use the Seven.io bridge instead.
+ * @deprecated since Symfony 7.3, use the Seven.io bridge instead.
  */
 final class Sms77Transport extends AbstractTransport
 {
