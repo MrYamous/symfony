@@ -11,8 +11,6 @@
 
 namespace Symfony\Component\Notifier\Bridge\Sms77;
 
-trigger_deprecation('symfony/sms77-notifier', '7.3', 'The "symfony/sms77-notifier" package is deprecated, use "symfony/sevenio-notifier" instead.');
-
 use Symfony\Component\Notifier\Exception\TransportException;
 use Symfony\Component\Notifier\Exception\UnsupportedMessageTypeException;
 use Symfony\Component\Notifier\Message\MessageInterface;
