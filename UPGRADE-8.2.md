@@ -209,10 +209,15 @@ Security
  * `AccessTokenAuthenticator` now implements `FallbackAuthenticationEntryPointInterface`, so it becomes the
    entry point of a firewall that declares no other one: an unauthenticated request now gets a 401 carrying
    the RFC 6750 `WWW-Authenticate: Bearer` challenge, where it used to get a 401 with no such header
+ * [BC BREAK] The `oauth2` access token handler now refuses an introspection response reporting an `exp` in the
+   past, or an `nbf` or an `iat` in the future, and one whose `exp`, `nbf` or `iat` is not a number it can read as
+   a timestamp
 
 SecurityBundle
 --------------
 
+ * The `oauth2` token handler now reads its configuration, where it used to ignore it. Giving it a string names
+   the HTTP client the introspection endpoint is called with, and `oauth2: ~` no longer fails to compile
  * Deprecate the `remember_me` option of the `form_login`, `json_login`, `login_link`, and `access_token` authenticators, as it has no effect
  * Deprecate not setting the `enforce_at_jwt_type` option of the `oidc` token handler; it defaults to `false`
    in 8.2 and will default to `true` in 9.0
