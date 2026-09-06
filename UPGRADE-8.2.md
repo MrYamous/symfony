@@ -202,11 +202,17 @@ Security
    The `$allowMultipleAttributes` argument will be removed in 9.0
  * Add argument `$parameters` to `LoginLinkHandlerInterface::createLoginLink()`
  * Add argument `$parameters` to `SignatureHasher::computeSignatureHash()`, `SignatureHasher::acceptSignatureHash()` and `SignatureHasher::verifySignatureHash()`
+ * [BC BREAK] `OidcTokenHandler` now rejects the tokens whose `typ` header is not `at+jwt` or
+   `application/at+jwt`, as RFC 9068 requires from a JWT access token; pass `false` to the new
+   `$enforceAtJwtType` argument to keep accepting them. Configuring the handler through SecurityBundle
+   is not affected until 9.0
 
 SecurityBundle
 --------------
 
  * Deprecate the `remember_me` option of the `form_login`, `json_login`, `login_link`, and `access_token` authenticators, as it has no effect
+ * Deprecate not setting the `enforce_at_jwt_type` option of the `oidc` token handler; it defaults to `false`
+   in 8.2 and will default to `true` in 9.0
  * Deprecate configuring an access control rule with many `roles`, use `allow_if` or role hierarchy instead
  * Deprecate configuring both an access control rule `allow_if` and `roles`, update `allow_if` instead
  * A service used as a firewall `success_handler` or `failure_handler` is now wired as-is, so decorating it
