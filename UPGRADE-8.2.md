@@ -205,6 +205,10 @@ Security
  * Deprecate not passing the `$enforceAtJwtType` argument to `OidcTokenHandler`; pass `true` to reject
    the tokens whose `typ` header is not `at+jwt` or `application/at+jwt`, as RFC 9068 requires from a
    JWT access token. It defaults to `false` in 8.2 and will default to `true` in 9.0
+ * Add argument `$resourceMetadataUri` to `AccessTokenAuthenticator::__construct()`
+ * `AccessTokenAuthenticator` now implements `FallbackAuthenticationEntryPointInterface`, so it becomes the
+   entry point of a firewall that declares no other one: an unauthenticated request now gets a 401 carrying
+   the RFC 6750 `WWW-Authenticate: Bearer` challenge, where it used to get a 401 with no such header
 
 SecurityBundle
 --------------
